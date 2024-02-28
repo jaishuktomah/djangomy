@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import ClassRoom
 # Create your views here.
 def home(request):
     return HttpResponse("""
@@ -32,6 +32,12 @@ def classroom(request):
     return render(request, template_name="myapp/classroom.html", 
                   context={"classroom_name":"one","location":"ktm","classrooms":classrooms}) 
     
-  
+def classroom_qs(request):
+    classrooms = ClassRoom.objects.all()
+    return render(request, template_name="myapp/classroom_qs.html", 
+                  context={"classrooms":classrooms})
+    
+    
+    
     
     
